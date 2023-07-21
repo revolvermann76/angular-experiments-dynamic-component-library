@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "funky-button": {
+      "projectType": "library",
+      "root": "projects/funky-button",
+      "sourceRoot": "projects/funky-button/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/funky-button/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/funky-button/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/funky-button/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/funky-button/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+
+  }
+}
